@@ -3,13 +3,20 @@ class Solution:
         charset = set()
         l,r=0,0
         res = 0
-        while r<len(s):
-            if s[r] not in charset:
-                charset.add(s[r])
-                res = max(res,r-l+1)
-                r+=1
-            else:
-                while s[r] in charset:
-                    charset.remove(s[l])
-                    l+=1
+        # while r<len(s):
+        #     if s[r] not in charset:
+        #         charset.add(s[r])
+        #         res = max(res,r-l+1)
+        #         r+=1
+        #     else:
+        #         while s[r] in charset:
+        #             charset.remove(s[l])
+        #             l+=1
+        # return res
+        for r in range(len(s)):
+            while s[r] in charset:
+                charset.remove(s[l])
+                l+=1
+            charset.add(s[r])
+            res=max(res,r-l+1)
         return res
